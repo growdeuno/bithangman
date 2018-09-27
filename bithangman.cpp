@@ -45,4 +45,37 @@ int main(){
   cout << "\n ########################################";
 
   // loop until the guesses are used up
+  while(num_of_wrong_guesses < MAX_TRIES)
+  {
+        cout << "\n\n" << unknown;
+        cout << "\n\n Guess a letter";
+        cin >> letter;
+
+        if(letterFill(letter, word, unknown)==0)
+        {
+          cout << endl << "Whoops! That letter isn't in there!"<<endl;
+          num_of_wrong_guesses++;
+        }
+        else
+        {
+          cout << endl << "You found a letter! Isn't that exciting?" << endl;
+        }
+        //Tell user how many guesses has left;
+        cout << "You have " << MAX_TRIES - num_of_wrong_guesses;
+        cout << " guesses left." << endl;
+        // Check if they guessed the word;
+        if(strcmp(word, unknown)==0)
+        {
+          cout << word << endl;
+          cout << "Yeah! You got it!";
+          break;
+        }
+  }
+  if(num_of_wrong_guesses == MAX_TRIES)
+  {
+        cout << "\nSorry, you lose... you've been hanged." <<endl;
+        cout << "The word was : " <<word << endl;
+  }
+  getch();
+  return 0;
 }
